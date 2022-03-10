@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
+import Series from "./pages/Series";
+import Header from "./components/Header";
+import Container from "./components/Container";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [feed, setFeed] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        retriveFeed();
+    }, []);
+
+    function retriveFeed() {
+        fetch("feed.json")
+            .then((response) => response.json())
+            .then((data) => {
+                setFeed(data);
+                setLoading(false);
+            })
+            .catch(() => setError("Ops something went wrong!"));
+    }
+    return (
+        <div>
+            <Header />
+            <Container>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="/movies"
+                        element={
+                            <Movies
+                                feed={feed}
+                                loading={loading}
+                                error={error}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/series"
+                        element={
+                            <Series
+                                feed={feed}
+                                loading={loading}
+                                error={error}
+                            />
+                        }
+                    />
+                </Routes>
+            </Container>
+        </div>
+    );
 }
 
 export default App;

@@ -1,0 +1,40 @@
+.category {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 3rem;
+}
+
+.card {
+    width: 500px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    transition: transform 350ms ease;
+}
+
+.card img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.card p {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 100%;
+    }
+
+    .card p {
+        font-size: 1em;
+    }
+}

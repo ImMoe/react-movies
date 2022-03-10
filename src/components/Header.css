@@ -1,0 +1,48 @@
+.header {
+    background-color: #000000;
+    color: #fff;
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.logo > a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1.2rem;
+}
+
+.menu li {
+    padding: 1.5rem 0;
+    font-size: 1.2em;
+}
+
+.menu li > a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu li:hover > a {
+    color: #ff0000;
+    cursor: pointer;
+    transition: all 350ms ease;
+}
+
+@media screen and (max-width: 600px) {
+    .menu li {
+        font-size: 1em;
+    }
+}
