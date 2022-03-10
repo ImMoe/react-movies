@@ -1,6 +1,8 @@
 .header {
     background-color: #000000;
     color: #fff;
+    position: sticky;
+    top: 0;
 }
 
 .justify-between {

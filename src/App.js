@@ -5,6 +5,7 @@ import Movies from "./pages/Movies";
 import Series from "./pages/Series";
 import Header from "./components/Header";
 import Container from "./components/Container";
+import Footer from "./components/Footer";
 
 function App() {
     const [feed, setFeed] = useState([]);
@@ -25,7 +26,7 @@ function App() {
             .catch(() => setError("Ops something went wrong!"));
     }
     return (
-        <div>
+        <>
             <Header />
             <Container>
                 <Routes>
@@ -52,7 +53,8 @@ function App() {
                     />
                 </Routes>
             </Container>
-        </div>
+            <Footer />
+        </>
     );
 }
 
